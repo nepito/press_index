@@ -9,4 +9,4 @@ pases_totales <- liverpool |>
 
 liverpool <- liverpool |>
   left_join(pases_totales, by = "Date") |>
-  mutate(tilt = 100*Passes_to_final_third_accurate / total_pases)
+  mutate(tilt = 100 * Passes_to_final_third_accurate / total_pases)
