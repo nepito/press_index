@@ -10,3 +10,8 @@ liverpool |>
   filter(Team == "Liverpool") |>
   select(1,2,7:8,109:111)
 
+chelsea <- read_team_stats("/workdir/data/Chelsea.csv") |>
+  filter_premier_league()
+
+chelsea <- chelsea |>
+  add_tilt()
