@@ -2,11 +2,12 @@ library(tidyverse)
 library(jsonlite)
 library(wstools)
 
-league <- "263"
+league <- "135"
 teams_names_by_league <- list(
   "39" = c("Liverpool", "Chelsea", "Manchester City", "Tottenham Hotspur", "Arsenal", "Brighton", "Crystal Palace", "Aston Villa", "Brentford", "Everton", "Fulham", "Leeds United", "Leicester City", "Manchester United", "Newcastle United", "Nottingham Forest", "Southampton", "West Ham United", "Wolverhampton Wanderers", "Bournemouth"),
   "262" = c("América", "Atlas", "Atlético de San Luis", "Club Tijuana", "Cruz Azul", "Guadalajara", "Juárez", "León", "Mazatlán", "Monterrey", "Necaxa", "Pachuca", "Puebla", "Pumas UNAM", "Querétaro", "Santos Laguna", "Tigres UANL", "Toluca"),
-  "263" = c("Alebrijes de Oaxaca", "Cancún", "Dorados", "Raya2", "Universidad Guadalajara", "Atlante", "Celaya","Durango","Tapatío","Venados","Atlético Morelia","Cimarrones de Sonora", "Mineros de Zacatecas","Tepatitlán de Morelos","CA La Paz","Correcaminos UAT","Pumas Tabasco","Tlaxcala")
+  "263" = c("Alebrijes de Oaxaca", "Cancún", "Dorados", "Raya2", "Universidad Guadalajara", "Atlante", "Celaya","Durango","Tapatío","Venados","Atlético Morelia","Cimarrones de Sonora", "Mineros de Zacatecas","Tepatitlán de Morelos","CA La Paz","Correcaminos UAT","Pumas Tabasco","Tlaxcala"),
+  "135" = c('Cremonese', 'Sampdoria', 'Internazionale', 'Hellas Verona', 'Monza', 'Fiorentina', 'Milan', 'Lecce', 'Juventus', 'Empoli', 'Sassuolo', 'Napoli', 'Spezia', 'Lazio', 'Roma', 'Atalanta', 'Bologna', 'Torino', 'Salernitana', 'Udinese')
 )
 names <- teams_names_by_league[[league]]
 
