@@ -1,0 +1,51 @@
+library(tidyverse)
+library("comprehenr")
+library(jsonlite)
+library(wstools)
+
+league <- "263"
+teams_names_by_league <- list(
+  "39" = c("Liverpool", "Chelsea", "Manchester City", "Tottenham Hotspur", "Arsenal", "Brighton", "Crystal Palace", "Aston Villa", "Brentford", "Everton", "Fulham", "Leeds United", "Leicester City", "Manchester United", "Newcastle United", "Nottingham Forest", "Southampton", "West Ham United", "Wolverhampton Wanderers", "Bournemouth"),
+  "262" = c("América", "Atlas", "Atlético de San Luis", "Club Tijuana", "Cruz Azul", "Guadalajara", "Juárez", "León", "Mazatlán", "Monterrey", "Necaxa", "Pachuca", "Puebla", "Pumas UNAM", "Querétaro", "Santos Laguna", "Tigres UANL", "Toluca"),
+  "263" = c("Alebrijes de Oaxaca", "Cancún", "Dorados", "Raya2", "Universidad Guadalajara", "Atlante", "Celaya","Durango","Tapatío","Venados","Atlético Morelia","Cimarrones de Sonora", "Mineros de Zacatecas","Tepatitlán de Morelos","CA La Paz","Correcaminos UAT","Pumas Tabasco","Tlaxcala")
+)
+names <- teams_names_by_league[[league]]
+all_team_stats <- list()
+all_rivals_team <- list()
+for (team in names) {
+  team_name <- str_replace_all(team, " ", "_")
+  path <- glue::glue("/workdir/data/{team_name}.csv")
+  team_stats <- read_team_stats(path) |>
+#     filter_premier_league() |>
+    add_tilt() |>
+    filter(Team == team)
+  all_team_stats[[team]] <- team_stats
+  team_stats <- read_team_stats(path) |>
+#     filter_premier_league() |>
+    filter(Team != team)
+  all_rivals_team[[team]] <- team_stats
+}
+mean_team_passes <- to_vec(for (team in names) mean(all_team_stats[[team]]$Passes_accurate_percentage, na.rm = TRUE))
+all_team_passes <- tibble(
+  "team" = names,
+  passes_accurate_percentage_rivals = mean_team_passes
+)
+
+for (team in names) {
+  all_rivals_team[[team]] <- all_rivals_team[[team]] |>
+    left_join(all_team_passes, by = c("Team" = "team")) |>
+    mutate(build_up = passes_accurate_percentage_rivals - Passes_accurate_percentage) |>
+    select(c(1, 2, 5, 12:14, 110:111))
+}
+mean_team_xg <- to_vec(for (team in names) mean(all_team_stats[[team]]$xG, na.rm = TRUE))
+mean_build_up_disruption <- to_vec(for (team in names) mean(all_rivals_team[[team]]$build_up, na.rm = TRUE))
+mean_ppda <- to_vec(for (team in names) mean(all_team_stats[[team]]$PPDA, rm.rm = TRUE))
+build_up_teams <- tibble(
+  "team" = names,
+  xG = mean_team_xg,
+  build_up_disruption = mean_build_up_disruption,
+  ppda = mean_ppda
+) |>
+  arrange(-build_up_disruption) |>
+  write_csv(glue::glue("build_up_and_ppda_{league}.csv"))
+best_build_team <- build_up_teams$team[1]
