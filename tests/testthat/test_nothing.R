@@ -53,4 +53,17 @@ describe("Normalize variable", {
     obtained <- calculate_offensive_transition(raw)
     expect_equal(expected, obtained, tolerance = 1e-3)
   })
+  it("High pression", {
+    raw <- tibble::tibble(
+      build_up_disruption_n = c(1, 1.25, 1.5, 1.75, 2),
+      ppda_n = c(1, 1.25, 1.5, 1.75, 2)
+    )
+    expected <- tibble::tibble(
+      build_up_disruption_n = c(1, 1.25, 1.5, 1.75, 2),
+      ppda_n = c(1, 1.25, 1.5, 1.75, 2),
+      high_pression = c(1, 1, 1, 1, 1)
+    )
+    obtained <- calculate_high_pression(raw)
+    expect_equal(expected, obtained, tolerance = 1e-3)
+  })
 })
