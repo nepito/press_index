@@ -14,6 +14,10 @@ normalize_bdp <- function(raw_data) {
   return(.normalize_index(raw_data, "build_up_disruption"))
 }
 
+calculate_offensive_transition <- function(raw_data) {
+  raw_data |> dplyr::mutate(offe_tran = tempo * xG / delta_n)
+}
+
 .normalize_index <- function(raw_data, col_name) {
   min_d <- min(raw_data[[col_name]], na.rm = TRUE)
   max_d <- max(raw_data[[col_name]], na.rm = TRUE)
