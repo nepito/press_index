@@ -37,4 +37,19 @@ describe("Normalize variable", {
     obtained <- normalize_bdp(raw)
     expect_equal(expected, obtained)
   })
+  it("Offensive transition", {
+    raw <- tibble::tibble(
+      tempo = c(1, 2, 3, 4, 5),
+      xG = c(2, 3, 4, 5, 6),
+      delta_n = c(1, 1.25, 1.5, 1.75, 2)
+    )
+    expected <-tibble::tibble(
+      tempo = c(1, 2, 3, 4, 5),
+      xG = c(2, 3, 4, 5, 6),
+      delta_n = c(1, 1.25, 1.5, 1.75, 2),
+      offe_tran = c(2, 3, 8, 10, 15)
+    )
+    obtained <- calculate_offensive_transition(raw)
+    expect_equal(expected, obtained)
+  })
 })
