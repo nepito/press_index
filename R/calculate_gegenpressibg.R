@@ -1,3 +1,4 @@
+#' @export
 calculate_ggpi <- function(raw_data) {
   data_with_ggpri <- raw_data |>
     normalize_delta() |>
