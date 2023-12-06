@@ -28,4 +28,13 @@ describe("Normalize variable", {
     obtained <- normalize_ppda(raw)
     expect_equal(expected, obtained)
   })
+  it("build_up_disruption", {
+    raw <- tibble::tibble(build_up_disruption = c(1, 2, 3, 4, 5))
+    expected <- tibble::tibble(
+      build_up_disruption = c(1, 2, 3, 4, 5),
+      build_up_disruption_n = c(1, 1.25, 1.5, 1.75, 2)
+    )
+    obtained <- normalize_bdp(raw)
+    expect_equal(expected, obtained)
+  })
 })
