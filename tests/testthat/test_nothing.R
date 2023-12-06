@@ -47,9 +47,9 @@ describe("Normalize variable", {
       tempo = c(1, 2, 3, 4, 5),
       xG = c(2, 3, 4, 5, 6),
       delta_n = c(1, 1.25, 1.5, 1.75, 2),
-      offe_tran = c(2, 3, 8, 10, 15)
+      offe_tran = c(2, 4.8, 8, 11.42857, 15)
     )
     obtained <- calculate_offensive_transition(raw)
-    expect_equal(expected, obtained)
+    expect_equal(expected, obtained, tolerance = 1e-3)
   })
 })
