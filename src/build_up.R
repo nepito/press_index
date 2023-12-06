@@ -3,12 +3,15 @@ library("comprehenr")
 library(jsonlite)
 library(wstools)
 
-league <- "263"
+league <- "78"
 teams_names_by_league <- list(
-  "39" = c("Liverpool", "Chelsea", "Manchester City", "Tottenham Hotspur", "Arsenal", "Brighton", "Crystal Palace", "Aston Villa", "Brentford", "Everton", "Fulham", "Leeds United", "Leicester City", "Manchester United", "Newcastle United", "Nottingham Forest", "Southampton", "West Ham United", "Wolverhampton Wanderers", "Bournemouth"),
+  "39" = c("Liverpool", "Chelsea", "Manchester City", "Tottenham Hotspur", "Arsenal", "Brighton", "Crystal Palace", "Aston Villa", "Brentford", "Everton", "Fulham", "Manchester United", "Newcastle United", "Nottingham Forest", "Southampton", "West Ham United", "Wolverhampton Wanderers", "Bournemouth", "Burnley", "Luton_Town", "Sheffield_United"),
+  "78" = c("Augsburg", "Bayer Leverkusen", "Bayern München", "Bochum", "Borussia Dortmund", "Borussia Mgladbach", "Darmstadt 98", "Eintracht Frankfurt", "Freiburg", "Heidenheim", "Hoffenheim", "Köln", "Mainz 05", "RB Leipzig", "Stuttgart", "Union Berlin", "Werder Bremen", "Wolfsburg"),
+  "94" = c("Arouca", "Benfica", "Boavista", "Casa Pia AC", "Chaves", "Estoril", "Famalicão", "Gil Vicente", "Marítimo", "Paços de Ferreira", "Portimonense", "Porto", "Rio Ave", "Santa Clara", "Sporting Braga", "Sporting CP", "Vitória Guimarães", "Vizela", "Santos Laguna", "Tigres UANL", "Toluca"),
   "262" = c("América", "Atlas", "Atlético de San Luis", "Club Tijuana", "Cruz Azul", "Guadalajara", "Juárez", "León", "Mazatlán", "Monterrey", "Necaxa", "Pachuca", "Puebla", "Pumas UNAM", "Querétaro", "Santos Laguna", "Tigres UANL", "Toluca"),
   "263" = c("Alebrijes de Oaxaca", "Cancún", "Dorados", "Raya2", "Universidad Guadalajara", "Atlante", "Celaya", "Durango", "Tapatío", "Venados", "Atlético Morelia", "Cimarrones de Sonora", "Mineros de Zacatecas", "Tepatitlán de Morelos", "CA La Paz", "Correcaminos UAT", "Pumas Tabasco", "Tlaxcala"),
-  "135" = c("Cremonese", "Sampdoria", "Internazionale", "Hellas Verona", "Monza", "Fiorentina", "Milan", "Lecce", "Juventus", "Empoli", "Sassuolo", "Napoli", "Spezia", "Lazio", "Roma", "Atalanta", "Bologna", "Torino", "Salernitana", "Udinese")
+  "135" = c("Cremonese", "Sampdoria", "Internazionale", "Hellas Verona", "Monza", "Fiorentina", "Milan", "Lecce", "Juventus", "Empoli", "Sassuolo", "Napoli", "Spezia", "Lazio", "Roma", "Atalanta", "Bologna", "Torino", "Salernitana", "Udinese"),
+  "140" = c("Almería", "Athletic Bilbao", "Atlético Madrid", "Barcelona", "Cádiz", "Celta de Vigo", "Deportivo Alavés", "Getafe", "Girona", "Granada", "Las Palmas", "Mallorca", "Osasuna", "Rayo Vallecano", "Real Betis", "Real Madrid", "Real Sociedad", "Sevilla", "Valencia", "Villarreal")
 )
 names <- teams_names_by_league[[league]]
 all_team_stats <- list()
