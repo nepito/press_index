@@ -7,8 +7,8 @@ jobs:
     - name: Copia repositorio
       uses: actions/checkout@v2
     - name: Construye imagen
-      run: docker build --tag islasgeci .
+      run: docker build --tag nies .
     - name: Verifica el formato
-      run: docker run islasgeci make check
+      run: docker run nies make check
     - name: Corre pruebas y evalúa cobertura
-      run: docker run islasgeci make coverage
+      run: docker run nies make coverage
