@@ -14,3 +14,12 @@ describe("Get version of the module", {
     expect_true(version_are_equal)
   })
 })
+
+describe("Normalize variable", {
+  it("delta", {
+    raw <- tibble::tibble(delta = c(1, 2, 3, 4, 5))
+    expected <- tibble::tibble(delta = c(1, 2, 3, 4, 5), delta_n = c(1, 1.25, 1.5, 1.75, 2))
+    obtained <- normalize_delta(raw)
+    expect_equal(expected, obtained)
+  })
+})
