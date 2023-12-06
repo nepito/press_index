@@ -10,6 +10,10 @@ normalize_ppda <- function(raw_data) {
   return(.normalize_index(raw_data, "ppda"))
 }
 
+normalize_bdp <- function(raw_data) {
+  return(.normalize_index(raw_data, "build_up_disruption"))
+}
+
 .normalize_index <- function(raw_data, col_name) {
   min_d <- min(raw_data[[col_name]], na.rm = TRUE)
   max_d <- max(raw_data[[col_name]], na.rm = TRUE)
