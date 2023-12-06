@@ -1,13 +1,13 @@
-Package: templater
-Title: Template for R projects
+Package: pression
+Title: Pression index
 Authors@R: c(
-    person(given = "Ciencia de Datos",
-           family = "GECI",
+    person(given = "nies futbol",
+           family = "nies futbol",
            role = c("aut", "cre", "cph"),
-           email = "ciencia.datos@islas.org.mx"
+           email = "nepo@nies.futbol"
            ))
 Config/testthat/edition: 3
-Description: Plantilla de Ciencia de Datos en GECI para proyectos en R
+Description: Librería para calcular algunos índices de presión en el futbol.
 Encoding: UTF-8
 Imports:
     R6,
@@ -15,7 +15,7 @@ Imports:
 LazyData: true
 License: AGPL-3.0-or-later
 Roxygen: list(markdown = TRUE)
-RoxygenNote: 7.1.2
+RoxygenNote: 7.2.1
 Suggests:
     devtools,
     roxygen2,
