@@ -1,7 +1,3 @@
-return_one <- function() {
-  return(1)
-}
-
 normalize_delta <- function(raw_data) {
   return(.normalize_index(raw_data, "delta"))
 }
@@ -12,6 +8,10 @@ normalize_ppda <- function(raw_data) {
 
 normalize_bdp <- function(raw_data) {
   return(.normalize_index(raw_data, "build_up_disruption"))
+}
+
+normalize_offe_tran <- function(raw_data) {
+  return(.normalize_index(raw_data, "offe_tran"))
 }
 
 calculate_offensive_transition <- function(raw_data) {
