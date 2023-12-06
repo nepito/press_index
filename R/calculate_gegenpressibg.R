@@ -6,5 +6,6 @@ calculate_ggpi <- function(raw_data) {
     normalize_bdp() |>
     calculate_offensive_transition() |>
     normalize_offe_tran() |>
-    dplyr::mutate(ggpi = (build_up_disruption_n * offe_tran_n) / ppda_n)
+    calculate_high_pression() |>
+    dplyr::mutate(ggpi = high_pression * offe_tran_n)
 }
