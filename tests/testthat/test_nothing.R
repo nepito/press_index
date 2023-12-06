@@ -43,7 +43,7 @@ describe("Normalize variable", {
       xG = c(2, 3, 4, 5, 6),
       delta_n = c(1, 1.25, 1.5, 1.75, 2)
     )
-    expected <-tibble::tibble(
+    expected <- tibble::tibble(
       tempo = c(1, 2, 3, 4, 5),
       xG = c(2, 3, 4, 5, 6),
       delta_n = c(1, 1.25, 1.5, 1.75, 2),
