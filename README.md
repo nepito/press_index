@@ -2,6 +2,9 @@
 
 # Pressure index
 [![codecov](https://codecov.io/github/niesfutbol/pressure_index/graph/badge.svg?token=SPGA1DM17D)](https://codecov.io/github/niesfutbol/pressure_index)
+![licencia](https://img.shields.io/github/license/niesfutbol/pressure_index)
+![languages](https://img.shields.io/github/languages/top/niesfutbol/pressure_index)
+![commits](https://img.shields.io/github/commit-activity/y/niesfutbol/pressure_index)
 
 ## Step to use
 1. Transform the files `Team Stats {team}.xlsx` from xlsx to `{team}.csv`.
