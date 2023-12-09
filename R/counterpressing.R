@@ -11,7 +11,7 @@ Counterpressing <- R6::R6Class("Counterpressing", list(
     private$get_matches()
     private$set_losses_recovery_rivals()
     private$set_losses_recovery()
-    self$all_losses_recovery <- self$losses_recovery |> dplyr::left_join(self$losses_recovery_rivals, by = c("Match"="Match"))
+    private$set_all_losses_recovery()
   }
 ),
 private = list(
@@ -33,6 +33,10 @@ private = list(
       dplyr::filter(Team == "Eintracht Frankfurt") |>
       dplyr::select(c(1, 2, seq(init_losses, init_losses + 7)))
     names(self$losses_recovery) <- private$col_name
+  },
+  set_all_losses_recovery = function() {
+    self$all_losses_recovery <- self$losses_recovery |>
+      dplyr::left_join(self$losses_recovery_rivals, by = c("Match" = "Match"))
   },
   get_init_losses = function() {
     return(16)
