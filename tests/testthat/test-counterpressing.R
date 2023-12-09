@@ -36,4 +36,11 @@ describe("Counterpressing", {
     obtained_name <- names(losses_recovery)[7]
     expect_equal(obtained_name, expected_name)
   })
+  it("Property: `all_losses_recovery`", {
+    losses_recovery <- coun_press$all_losses_recovery
+    expected_n_matches <- 6
+    expect_equal(nrow(losses_recovery), expected_n_matches)
+    expected_n_columns <- 18
+    expect_equal(ncol(losses_recovery), expected_n_columns)
+  })
 })
