@@ -4,7 +4,9 @@ Counterpressing <- R6::R6Class("Counterpressing", list(
   losses_recovery_rivals = NULL,
   losses_recovery = NULL,
   all_losses_recovery = NULL,
-  initialize = function(path, team_name) {
+  team_name = NULL,
+  initialize = function(team_name) {
+	  self$team_name <- team_name
   },
   set_raw_data = function(raw_data) {
     self$raw_data <- raw_data
@@ -23,20 +25,21 @@ private = list(
   set_losses_recovery_rivals = function() {
     init_losses <- private$get_init_losses()
     self$losses_recovery_rivals <- self$raw_data |>
-      dplyr::filter(Team != "Eintracht Frankfurt") |>
+      dplyr::filter(Team != self$team_name) |>
       dplyr::select(c(2, seq(init_losses, init_losses + 7)))
     names(self$losses_recovery_rivals) <- private$col_name_rivals
   },
   set_losses_recovery = function() {
     init_losses <- private$get_init_losses()
     self$losses_recovery <- self$raw_data |>
-      dplyr::filter(Team == "Eintracht Frankfurt") |>
+      dplyr::filter(Team == self$team_name) |>
       dplyr::select(c(1, 2, seq(init_losses, init_losses + 7)))
     names(self$losses_recovery) <- private$col_name
   },
   set_all_losses_recovery = function() {
     self$all_losses_recovery <- self$losses_recovery |>
-      dplyr::left_join(self$losses_recovery_rivals, by = c("Match" = "Match"))
+      dplyr::left_join(self$losses_recovery_rivals, by = c("Match" = "Match")) |>
+      dplyr::mutate(counterpress = 100 * high_recoveries/low_recoveries_rivals)
   },
   get_init_losses = function() {
     return(16)

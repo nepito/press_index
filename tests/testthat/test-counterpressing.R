@@ -1,6 +1,6 @@
 describe("Counterpressing", {
   frankfurt <- readr::read_csv("/workdir/tests/data/Eintracht_Frankfurt.csv", show_col_types = FALSE)
-  coun_press <- Counterpressing$new()
+  coun_press <- Counterpressing$new("Eintracht Frankfurt")
   coun_press$set_raw_data(frankfurt)
   it("`set_raw_data()`", {
     expected_n_row <- 12
@@ -47,7 +47,7 @@ describe("Counterpressing", {
 
 describe("Counterpressing: Bayer Leverkusen", {
   leverkusen <- readr::read_csv("/workdir/tests/data/Bayer_Leverkusen.csv", show_col_types = FALSE)
-  coun_press <- Counterpressing$new()
+  coun_press <- Counterpressing$new("Bayer Leverkusen")
   coun_press$set_raw_data(leverkusen)
   it("Property: `all_losses_recovery`", {
     losses_recovery <- coun_press$all_losses_recovery
