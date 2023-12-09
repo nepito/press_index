@@ -23,4 +23,15 @@ describe("Counterpressing", {
     expected_name <- "recoveries_rivals"
     obtained_name <- names(losses_recovery_rivals)[6]
   })
+  it("Property: `losses_recovery`", {
+    losses_recovery <- coun_press$losses_recovery
+    expected_n_matches <- 6
+    expect_equal(nrow(losses_recovery), expected_n_matches)
+    expected_n_columns <- 10
+    expect_equal(ncol(losses_recovery), expected_n_columns)
+    # expected_name <- "losses"
+    # obtained_name <- names(losses_recovery_rivals)[2]
+    # expected_name <- "recoveries_rivals"
+    # obtained_name <- names(losses_recovery_rivals)[6]
+  })
 })
