@@ -12,4 +12,9 @@ describe("Counterpressing", {
     expected_n_matches <- 6
     expect_equal(n_matches, expected_n_matches)
   })
+  it("Property: `losses_recovery_rivals`", {
+    losses_recovery_rivals <- coun_press$losses_recovery_rivals
+    expected_n_matches <- 6
+    expect_equal(nrow(losses_recovery_rivals), expected_n_matches)
+  })
 })
