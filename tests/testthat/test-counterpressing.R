@@ -62,3 +62,21 @@ describe("Counterpressing: Bayer Leverkusen", {
     expect_equal(obtained_counterpressing, expected_counterpressing, tolerance = 1e-3)
   })
 })
+
+describe("Counterpressing: Liverpool", {
+  leverkusen <- readr::read_csv("/workdir/tests/data/Liverpool.csv", show_col_types = FALSE)
+  coun_press <- Counterpressing$new("Liverpool")
+  coun_press$set_raw_data(leverkusen)
+  it("Property: `all_losses_recovery`", {
+    losses_recovery <- coun_press$all_losses_recovery
+    expected_n_matches <- 38
+    expect_equal(nrow(losses_recovery), expected_n_matches)
+    expected_n_columns <- 19
+    expect_equal(ncol(losses_recovery), expected_n_columns)
+  })
+  it("Property: `counterpressing`", {
+    expected_counterpressing <- 37.6
+    obtained_counterpressing <- coun_press$counterpressing
+    expect_equal(obtained_counterpressing, expected_counterpressing, tolerance = 1e-0)
+  })
+})
