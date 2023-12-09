@@ -1,3 +1,4 @@
+#' @export
 Counterpressing <- R6::R6Class("Counterpressing", list(
   raw_data = NULL,
   matches = NULL,
@@ -5,6 +6,7 @@ Counterpressing <- R6::R6Class("Counterpressing", list(
   losses_recovery = NULL,
   all_losses_recovery = NULL,
   team_name = NULL,
+  counterpressing = NULL,
   initialize = function(team_name) {
     self$team_name <- team_name
   },
@@ -14,6 +16,7 @@ Counterpressing <- R6::R6Class("Counterpressing", list(
     private$set_losses_recovery_rivals()
     private$set_losses_recovery()
     private$set_all_losses_recovery()
+    private$calculate_counterpressing_mean()
   }
 ),
 private = list(
@@ -43,6 +46,11 @@ private = list(
   },
   get_init_losses = function() {
     return(16)
+  },
+  calculate_counterpressing_mean = function() {
+    self$counterpressing <- self$all_losses_recovery %>%
+      .$counterpress |>
+      mean()
   }
 )
 )

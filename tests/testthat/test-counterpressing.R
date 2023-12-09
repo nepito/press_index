@@ -56,4 +56,9 @@ describe("Counterpressing: Bayer Leverkusen", {
     expected_n_columns <- 19
     expect_equal(ncol(losses_recovery), expected_n_columns)
   })
+  it("Property: `counterpressing`", {
+    expected_counterpressing <- 40.817
+    obtained_counterpressing <- coun_press$counterpressing
+    expect_equal(obtained_counterpressing, expected_counterpressing, tolerance = 1e-3)
+  })
 })
