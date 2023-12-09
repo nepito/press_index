@@ -16,5 +16,7 @@ describe("Counterpressing", {
     losses_recovery_rivals <- coun_press$losses_recovery_rivals
     expected_n_matches <- 6
     expect_equal(nrow(losses_recovery_rivals), expected_n_matches)
+    expected_n_columns <- 9
+    expect_equal(ncol(losses_recovery_rivals), expected_n_columns)
   })
 })
