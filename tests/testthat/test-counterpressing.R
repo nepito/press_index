@@ -29,9 +29,11 @@ describe("Counterpressing", {
     expect_equal(nrow(losses_recovery), expected_n_matches)
     expected_n_columns <- 10
     expect_equal(ncol(losses_recovery), expected_n_columns)
-    # expected_name <- "losses"
-    # obtained_name <- names(losses_recovery_rivals)[2]
-    # expected_name <- "recoveries_rivals"
-    # obtained_name <- names(losses_recovery_rivals)[6]
+    expected_name <- "losses"
+    obtained_name <- names(losses_recovery)[3]
+    expect_equal(obtained_name, expected_name)
+    expected_name <- "recoveries"
+    obtained_name <- names(losses_recovery)[7]
+    expect_equal(obtained_name, expected_name)
   })
 })
