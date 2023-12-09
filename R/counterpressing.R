@@ -6,7 +6,7 @@ Counterpressing <- R6::R6Class("Counterpressing", list(
   all_losses_recovery = NULL,
   team_name = NULL,
   initialize = function(team_name) {
-	  self$team_name <- team_name
+    self$team_name <- team_name
   },
   set_raw_data = function(raw_data) {
     self$raw_data <- raw_data
@@ -39,7 +39,7 @@ private = list(
   set_all_losses_recovery = function() {
     self$all_losses_recovery <- self$losses_recovery |>
       dplyr::left_join(self$losses_recovery_rivals, by = c("Match" = "Match")) |>
-      dplyr::mutate(counterpress = 100 * high_recoveries/low_recoveries_rivals)
+      dplyr::mutate(counterpress = 100 * high_recoveries / low_recoveries_rivals)
   },
   get_init_losses = function() {
     return(16)
