@@ -10,6 +10,7 @@ teams_names_by_league <- list(
   "262" = c("América", "Atlas", "Atlético de San Luis", "Club Tijuana", "Cruz Azul", "Guadalajara", "Juárez", "León", "Mazatlán", "Monterrey", "Necaxa", "Pachuca", "Puebla", "Pumas UNAM", "Querétaro", "Santos Laguna", "Tigres UANL", "Toluca"),
   "263" = c("Alebrijes de Oaxaca", "Cancún", "Dorados", "Raya2", "Universidad Guadalajara", "Atlante", "Celaya", "Durango", "Tapatío", "Venados", "Atlético Morelia", "Cimarrones de Sonora", "Mineros de Zacatecas", "Tepatitlán de Morelos", "CA La Paz", "Correcaminos UAT", "Pumas Tabasco", "Tlaxcala"),
   "135" = c("Cremonese", "Sampdoria", "Internazionale", "Hellas Verona", "Monza", "Fiorentina", "Milan", "Lecce", "Juventus", "Empoli", "Sassuolo", "Napoli", "Spezia", "Lazio", "Roma", "Atalanta", "Bologna", "Torino", "Salernitana", "Udinese"),
+  "135_2024" = c("Cagliari", "Fiorentina", "Sassuolo", "Milan", "Lecce", "Genoa", "Juventus", "Internazionale", "Atalanta", "Hellas Verona", "Monza", "Salernitana", "Empoli", "Napoli", "Udinese", "Lazio", "Roma", "Torino", "Frosinone", "Bologna"),
   "140" = c("Almería", "Athletic Bilbao", "Atlético Madrid", "Barcelona", "Cádiz", "Celta de Vigo", "Deportivo Alavés", "Getafe", "Girona", "Granada", "Las Palmas", "Mallorca", "Osasuna", "Rayo Vallecano", "Real Betis", "Real Madrid", "Real Sociedad", "Sevilla", "Valencia", "Villarreal")
 )
 names <- teams_names_by_league[[league]]
