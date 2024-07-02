@@ -8,11 +8,16 @@
 
 ## Step to use
 1. Transform the files `Team Stats {team}.xlsx` from xlsx to `{team}.csv`.
-2. Calculate build-up and tilt 
-```
+2. Calculate build-up and tilt
+``` sh
 Rscript src/build_up.R
+Rscript src/tilt_match.R
 ```
 3. Add column tilt to build-up.
+``` sh
+Rscript src/concatenate_build_and_tilt.R
+```
+
 
 Los mayores xG creados por un equipo en un juego en todo el año:
 Tigres: 6.04 (vs Guadalajara)
