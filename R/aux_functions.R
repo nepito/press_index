@@ -1,3 +1,4 @@
+#' @export
 obtain_files_names <- function(path_directory) {
   files_name <- list.files(path = path_directory, pattern = "^Team Stats ")
   .clean_files_name(files_name)
