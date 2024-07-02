@@ -13,7 +13,10 @@ teams_names_by_league <- list(
   "135" = c("Cremonese", "Sampdoria", "Internazionale", "Hellas Verona", "Monza", "Fiorentina", "Milan", "Lecce", "Juventus", "Empoli", "Sassuolo", "Napoli", "Spezia", "Lazio", "Roma", "Atalanta", "Bologna", "Torino", "Salernitana", "Udinese"),
   "140" = c("Almería", "Athletic Bilbao", "Atlético Madrid", "Barcelona", "Cádiz", "Celta de Vigo", "Deportivo Alavés", "Getafe", "Girona", "Granada", "Las Palmas", "Mallorca", "Osasuna", "Rayo Vallecano", "Real Betis", "Real Madrid", "Real Sociedad", "Sevilla", "Valencia", "Villarreal")
 )
-names <- teams_names_by_league[[league]]
+library(pression)
+
+league <- "135_2024"
+names <- obtain_files_names("/workdir/data/serie_a_2023-24")
 all_team_stats <- list()
 all_rivals_team <- list()
 for (team in names) {

@@ -2,7 +2,7 @@ library(tidyverse)
 library("comprehenr")
 library(jsonlite)
 
-league <- "78"
+league <- "135_2024"
 tilts <- fromJSON(glue::glue("quantiles_tilt_{league}.json"))
 deltas <- fromJSON(glue::glue("quantiles_delta_{league}.json"))
 tempos <- fromJSON(glue::glue("quantiles_tempo_{league}.json"))
