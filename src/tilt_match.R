@@ -3,7 +3,7 @@ library(jsonlite)
 library(wstools)
 library(pression)
 
-league <- "135_2024"
+league <- "78_2024"
 teams_names_by_league <- list(
   "39" = c("Liverpool", "Chelsea", "Manchester City", "Tottenham Hotspur", "Arsenal", "Brighton", "Crystal Palace", "Aston Villa", "Brentford", "Everton", "Fulham", "Manchester United", "Newcastle United", "Nottingham Forest", "Southampton", "West Ham United", "Wolverhampton Wanderers", "Bournemouth", "Burnley", "Luton_Town", "Sheffield_United"),
   "78" = c("Augsburg", "Bayer Leverkusen", "Bayern München", "Bochum", "Borussia Dortmund", "Borussia Mgladbach", "Darmstadt 98", "Eintracht Frankfurt", "Freiburg", "Heidenheim", "Hoffenheim", "Köln", "Mainz 05", "RB Leipzig", "Stuttgart", "Union Berlin", "Werder Bremen", "Wolfsburg"),
@@ -14,12 +14,12 @@ teams_names_by_league <- list(
   "135_2024" = c("Cagliari", "Fiorentina", "Sassuolo", "Milan", "Lecce", "Genoa", "Juventus", "Internazionale", "Atalanta", "Hellas Verona", "Monza", "Salernitana", "Empoli", "Napoli", "Udinese", "Lazio", "Roma", "Torino", "Frosinone", "Bologna"),
   "140" = c("Almería", "Athletic Bilbao", "Atlético Madrid", "Barcelona", "Cádiz", "Celta de Vigo", "Deportivo Alavés", "Getafe", "Girona", "Granada", "Las Palmas", "Mallorca", "Osasuna", "Rayo Vallecano", "Real Betis", "Real Madrid", "Real Sociedad", "Sevilla", "Valencia", "Villarreal")
 )
-names <- obtain_files_names("/workdir/data/serie_a_2023-24")
+names <- obtain_files_names("/workdir/data/bundesliga_2023-24")
 
 all_team_stats <- list()
 for (team in names) {
   team_name <- str_replace_all(team, " ", "_")
-  path <- glue::glue("/workdir/data/{team_name}.csv")
+  path <- glue::glue("/workdir/data/bundesliga_2023-24/{team_name}.csv")
   team_stats <- read_team_stats(path) |>
     #    filter_premier_league() |>
     add_tilt() |>
