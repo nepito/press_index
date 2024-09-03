@@ -1,3 +1,5 @@
+library(tidyverse)
+data <- read_csv("data/bundesliga_2023-24/match_bundesliga_2023-24.csv", show_col_types = FALSE)
 athletic <- data |>
   mutate(
     deep_bu = Passes/`Long passes_accurate`,
@@ -18,3 +20,11 @@ athletic <- data |>
     creation = mean(creation),
     shot_quality = mean(shot_q)
   )
+
+tilt <- read_csv("xG_build-up_ppda_tilt_78_2024_2023-24.csv", show_col_types = FALSE)
+wheel_data <- athletic |>
+  left_join(tilt, by=c("Team"="team")) |>
+  select(
+    c("Team", "deep_build_up", "possesion", "central_progession", "circulation", "intensity", "patient", "creation", "shot_quality", "high_line", "press_resistance", "chance_prevention", "tilt")
+  ) |>
+  write_csv("wheel_data_bundesliga_2023-24.csv")
