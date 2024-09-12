@@ -30,12 +30,12 @@ select_wheel_index <- function(league_data_with_wheel_index) {
     select(1:3, ppda_mean, tempo_mean, central_p_mean, possession_mean)
 }
 random_xolos <- liga_mx |>
-  filter(team == "Club Tijuana") |>
+  filter(team == team_name) |>
   sample_frac(replace = TRUE) |>
   add_wheel_index(left_align = TRUE) |>
   select_wheel_index()
 
 chart_xolos <- liga_mx |>
-  filter(team == "Club Tijuana") |>
+  filter(team == team_name) |>
   add_wheel_index() |>
   select_wheel_index()
