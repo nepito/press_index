@@ -9,6 +9,17 @@ liga_mx <- data |>
   distinct(date, match, team, .keep_all = TRUE) |>
   filter(stringr::str_detect(competition, "Mexico"))
 
+random_xolos <- liga_mx |>
+  filter(team == team_name) |>
+  sample_frac(replace = TRUE) |>
+  add_wheel_index(left_align = TRUE) |>
+  select_wheel_index()
+
+chart_xolos <- liga_mx |>
+  filter(team == team_name) |>
+  add_wheel_index() |>
+  select_wheel_index()
+
 add_wheel_index <- function(league_data, left_align = FALSE) {
   how_align <- "right"
   if (left_align) {
@@ -29,13 +40,3 @@ select_wheel_index <- function(league_data_with_wheel_index) {
   league_data_with_wheel_index |>
     select(1:3, ppda_mean, tempo_mean, central_p_mean, possession_mean)
 }
-random_xolos <- liga_mx |>
-  filter(team == team_name) |>
-  sample_frac(replace = TRUE) |>
-  add_wheel_index(left_align = TRUE) |>
-  select_wheel_index()
-
-chart_xolos <- liga_mx |>
-  filter(team == team_name) |>
-  add_wheel_index() |>
-  select_wheel_index()
