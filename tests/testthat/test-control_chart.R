@@ -30,4 +30,8 @@ describe("add_wheel_index()", {
     expected <- c(2943, 2947, 2772, 3572)
     expect_equal(obtained[1:4], expected, tolerance = 1e-2)
   })
+  it("shot_quality_mean", {
+    obtained <- data_with_wheel |>
+      dplyr::pull(shot_quality_mean)
+  })
 })
