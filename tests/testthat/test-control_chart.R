@@ -1,7 +1,10 @@
+library(jsonlite)
 describe("add_wheel_index()", {
-  data <- readr::read_csv("/workdir/tests/data/tijuana.csv", show_col_types = FALSE)
+  dp <- fromJSON("/workdir/tests/data/datapackage.json")
+  names_from_dp <- dp$resources$schema$fields[[1]]$name
+  data <- readr::read_csv("/workdir/tests/data/tijuana.csv", show_col_types = FALSE, col_names = names_from_dp, skip = 1)
   data_with_wheel <- data |> add_wheel_index()
-n_rows <- nrow(data_with_wheel)
+  n_rows <- nrow(data_with_wheel)
   last_index <- seq(n_rows, n_rows - 3, -1)
   it("possession_mean", {
     obtained <- data_with_wheel |>
