@@ -2,7 +2,8 @@ library(jsonlite)
 describe("add_wheel_index()", {
   dp <- fromJSON("/workdir/tests/data/datapackage.json")
   names_from_dp <- dp$resources$schema$fields[[1]]$name
-  data <- readr::read_csv("/workdir/tests/data/tijuana.csv", show_col_types = FALSE, col_names = names_from_dp, skip = 1)
+  data <- readr::read_csv("/workdir/tests/data/tijuana.csv", show_col_types = FALSE, col_names = names_from_dp, skip = 1) |>
+    janitor::clean_names()
   data_with_wheel <- data |> add_wheel_index()
   n_rows <- nrow(data_with_wheel)
   last_index <- seq(n_rows, n_rows - 3, -1)
@@ -37,6 +38,13 @@ describe("add_wheel_index()", {
   it("shot_quality_mean", {
     obtained <- data_with_wheel |>
       dplyr::pull(shot_quality_mean)
+    n_rows <- length(obtained)
+    expected <- c(0.0895, 0.0821, 0.0824, 0.0993)
+    expect_equal(obtained[last_index], expected, tolerance = 1e-2)
+  })
+  it("patient_attack_mean", {
+    obtained <- data_with_wheel |>
+      dplyr::pull(patient_attack_mean)
     n_rows <- length(obtained)
     expected <- c(26, 30, 30, 25)
     expect_equal(obtained[last_index], expected, tolerance = 1e-2)
