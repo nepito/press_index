@@ -1,8 +1,5 @@
 add_wheel_index <- function(league_data, left_align = FALSE) {
-  how_align <- "right"
-  if (left_align) {
-    how_align <- "left"
-  }
+  how_align <- .obtain_how_align(left_align)
   league_data_with_wheel_index <- league_data |>
     dplyr::mutate(
       central_p = passes_accurate * 100 / crosses_accurate,
@@ -12,6 +9,14 @@ add_wheel_index <- function(league_data, left_align = FALSE) {
       central_p_mean = zoo::rollapply(central_p, width = 4, mean, fill = NA, align = how_align)
     )
   return(league_data_with_wheel_index)
+}
+
+.obtain_how_align <- function(left_align) {
+  how_align <- "right"
+  if (left_align) {
+    how_align <- "left"
+  }
+  return(how_align)
 }
 
 select_wheel_index <- function(league_data_with_wheel_index) {
