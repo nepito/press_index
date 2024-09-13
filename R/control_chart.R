@@ -5,11 +5,13 @@ add_wheel_index <- function(league_data, left_align = FALSE) {
       central_p = passes * 100 / crosses,
       patient_attack = shots * 100 / passes_to_final_third,
       shot_quality = x_g / shots,
+      creation = x_g * 90 / duration,
       ppda_mean = .roll_mean(ppda, how_align),
       tempo_mean = .roll_mean(match_tempo, how_align),
       possession_mean = .roll_mean(possession_percent, how_align),
       central_p_mean = .roll_mean(central_p, how_align),
       patient_attack_mean = .roll_mean(patient_attack, how_align),
+      creation_mean = .roll_mean(creation, how_align),
       shot_quality_mean = .roll_mean(shot_quality, how_align)
     )
   return(league_data_with_wheel_index)
