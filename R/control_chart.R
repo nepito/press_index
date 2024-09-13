@@ -31,5 +31,14 @@ add_wheel_index <- function(league_data, left_align = FALSE) {
 
 select_wheel_index <- function(league_data_with_wheel_index) {
   league_data_with_wheel_index |>
-    dplyr::select(1:3, ppda_mean, tempo_mean, central_p_mean, possession_mean, shot_quality_mean, patient_attack_mean)
+    dplyr::select(
+      1:3,
+      ppda_mean,
+      tempo_mean,
+      central_p_mean,
+      possession_mean,
+      shot_quality_mean,
+      patient_attack_mean,
+      creation_mean
+    )
 }
