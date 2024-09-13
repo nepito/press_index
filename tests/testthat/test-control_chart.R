@@ -12,4 +12,10 @@ describe("add_wheel_index()", {
     expected <- c(12.4, 12.4, 9.8, 9.4)
     expect_equal(obtained[seq(n_rows,n_rows-3, -1)], expected, tolerance=1e-2)
   })
+  it("central_p_mean", {
+    obtained <- data |> add_wheel_index() |> dplyr::pull(central_p_mean)
+    n_rows <- length(obtained)
+    expected <- c(4756, 2434, 2374, 2245)
+    expect_equal(obtained[seq(n_rows,n_rows-3, -1)], expected, tolerance=1e-2)
+  })
 })
