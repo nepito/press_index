@@ -56,4 +56,11 @@ describe("add_wheel_index()", {
     expected <- c(0.81, 0.97, 1.07, 1.16)
     expect_equal(obtained[last_index], expected, tolerance = 1e-2)
   })
+  it("circulation_mean", {
+    obtained <- data_with_wheel |>
+      dplyr::pull(circulation_mean)
+    n_rows <- length(obtained)
+    expected <- c(6.6, 5.6, 5.4, 5.3)
+    expect_equal(obtained[last_index], expected, tolerance = 1e-2)
+  })
 })

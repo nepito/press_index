@@ -3,6 +3,7 @@ add_wheel_index <- function(league_data, left_align = FALSE) {
   league_data_with_wheel_index <- league_data |>
     dplyr::mutate(
       central_p = passes * 100 / crosses,
+      circulation = passes / progressive_passes,
       patient_attack = shots * 100 / passes_to_final_third,
       shot_quality = x_g / shots,
       creation = x_g * 90 / duration,
@@ -10,6 +11,7 @@ add_wheel_index <- function(league_data, left_align = FALSE) {
       tempo_mean = .roll_mean(match_tempo, how_align),
       possession_mean = .roll_mean(possession_percent, how_align),
       central_p_mean = .roll_mean(central_p, how_align),
+      circulation_mean = .roll_mean(circulation, how_align),
       patient_attack_mean = .roll_mean(patient_attack, how_align),
       creation_mean = .roll_mean(creation, how_align),
       shot_quality_mean = .roll_mean(shot_quality, how_align)
