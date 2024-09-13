@@ -1,12 +1,13 @@
 describe("add_wheel_index()", {
   data <- readr::read_csv("/workdir/tests/data/tijuana.csv", show_col_types = FALSE)
   data_with_wheel <- data |> add_wheel_index()
+n_rows <- nrow(data_with_wheel)
+  last_index <- seq(n_rows, n_rows - 3, -1)
   it("possession_mean", {
     obtained <- data_with_wheel |>
       dplyr::pull(possession_mean)
-    n_rows <- length(obtained)
     expected <- c(50, 46.44, 50, 50.255)
-    expect_equal(obtained[seq(n_rows, n_rows - 3, -1)], expected)
+    expect_equal(obtained[last_index], expected)
   })
   it("ppda_mean", {
     obtained <- data_with_wheel |>
@@ -33,5 +34,8 @@ describe("add_wheel_index()", {
   it("shot_quality_mean", {
     obtained <- data_with_wheel |>
       dplyr::pull(shot_quality_mean)
+    n_rows <- length(obtained)
+    expected <- c(26, 30, 30, 25)
+    expect_equal(obtained[last_index], expected, tolerance = 1e-2)
   })
 })
