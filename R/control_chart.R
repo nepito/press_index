@@ -38,6 +38,7 @@ select_wheel_index <- function(league_data_with_wheel_index) {
       ppda_mean,
       tempo_mean,
       central_p_mean,
+      circulation_mean,
       possession_mean,
       shot_quality_mean,
       patient_attack_mean,
