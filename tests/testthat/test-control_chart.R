@@ -49,4 +49,11 @@ describe("add_wheel_index()", {
     expected <- c(26, 30, 30, 25)
     expect_equal(obtained[last_index], expected, tolerance = 1e-2)
   })
+  it("creation_mean", {
+    obtained <- data_with_wheel |>
+      dplyr::pull(creation_mean)
+    n_rows <- length(obtained)
+    expected <- c(1.27, 1.27, 1.30, 1.25)
+    expect_equal(obtained[last_index], expected, tolerance = 1e-2)
+  })
 })
