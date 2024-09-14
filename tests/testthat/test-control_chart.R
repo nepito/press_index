@@ -72,6 +72,7 @@ describe("add_wheel_index_from_rivals()", {
     filter_rivals_data_of_team("Club Tijuana") |>
     add_wheel_index_from_rivals()
   n_rows <- nrow(rivals_data)
+  last_index <- seq(n_rows, n_rows - 3, -1)
   it("filter_rivals_data_of_team()", {
     expected <- 35
     expect_equal(n_rows, expected)
@@ -79,7 +80,13 @@ describe("add_wheel_index_from_rivals()", {
   it("chance_prevention_mean", {
     obtained <- rivals_data |>
       dplyr::pull(chance_prevention_mean)
-    expected <- c(0.81, 0.97, 1.07, 1.16)
+    expected <- c(1.4, 2.1, 2.2, 2.2)
+    expect_equal(obtained[last_index], expected, tolerance = 1e-2)
+  })
+  it("high_line_mean", {
+    obtained <- rivals_data |>
+      dplyr::pull(high_line_mean)
+    expected <- c(3.4, 3.1, 3.2, 3.2)
     expect_equal(obtained[last_index], expected, tolerance = 1e-2)
   })
 })
