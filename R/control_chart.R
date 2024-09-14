@@ -50,3 +50,14 @@ filter_rivals_data_of_team <- function(data, team_name) {
   filtered_data <- data |>
     dplyr::filter(stringr::str_detect(match, team_name), team != team_name)
 }
+
+add_wheel_index_from_rivals <- function(rivals_league_data, left_align = FALSE) {
+  how_align <- "right"
+  league_data_with_wheel_index <- rivals_league_data |>
+    dplyr::mutate(
+      high_line = counterattacks + offsides,
+      chance_prevention_mean = .roll_mean(x_g, how_align),
+      high_line_mean = .roll_mean(high_line, how_align)
+    )
+  return(league_data_with_wheel_index)
+}
