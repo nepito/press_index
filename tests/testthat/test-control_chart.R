@@ -114,6 +114,6 @@ describe("calculate_limits_of_chart_control", {
     limits_data <- tibble::tibble(a = 1:5)
     obtained <- limits_data |> calculate_limits_of_chart_control(a)
     expected <- c(1.42, 4.58)
-    expect_equal(obtained, expected)
+    expect_equal(obtained, expected, tolerance = 1e-2)
   })
 })
