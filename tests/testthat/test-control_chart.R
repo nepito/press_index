@@ -101,4 +101,10 @@ describe("add_wheel_index_from_rivals()", {
     expected <- c(4.75, 3.75, 2.5, 2.0)
     expect_equal(obtained[last_index], expected, tolerance = 1e-2)
   })
+  it("rivals_passes_to_final_third", {
+    obtained <- rivals_data |>
+      dplyr::pull(rivals_passes_to_final_third)
+    expected <- c(56, 40, 44, 60)
+    expect_equal(obtained[last_index], expected, tolerance = 1e-2)
+  })
 })
