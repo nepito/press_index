@@ -67,6 +67,12 @@ describe("add_wheel_index()", {
     expected <- c(6.94, 5.67, 5.68, 5.70)
     expect_equal(obtained[last_index], expected, tolerance = 1e-2)
   })
+  it("deep_build_up_mean", {
+    obtained <- data_with_wheel |>
+      dplyr::pull(deep_build_up_mean)
+    expected <- c(6.94, 5.67, 5.68, 5.70)
+    expect_equal(obtained[last_index], expected, tolerance = 1e-2)
+  })
 })
 
 describe("add_wheel_index_from_rivals()", {
