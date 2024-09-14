@@ -47,6 +47,8 @@ select_wheel_index <- function(league_data_with_wheel_index) {
       shot_quality_mean,
       patient_attack_mean,
       creation_mean,
+      press_resistance_mean,
+      deep_build_up_mean,
       passes_to_final_third
     )
 }
