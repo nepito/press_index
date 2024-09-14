@@ -76,3 +76,8 @@ rivals_select_wheel_index <- function(rivals_league_data_with_wheel_index) {
       1:3, rivals_passes_to_final_third, high_line_mean, chance_prevention_mean
     )
 }
+
+calculate_limits_of_chart_control <- function(data_to_calculate_limits, variable_to_calculate_limits) {
+  data <- c(3,3)
+  limits <- c(mean(data)- sd(data), mean(data)+ sd(data))
+}
