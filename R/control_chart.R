@@ -46,7 +46,8 @@ select_wheel_index <- function(league_data_with_wheel_index) {
       possession_mean,
       shot_quality_mean,
       patient_attack_mean,
-      creation_mean
+      creation_mean,
+      passes_to_final_third
     )
 }
 
@@ -59,6 +60,7 @@ add_wheel_index_from_rivals <- function(rivals_league_data, left_align = FALSE) 
   how_align <- "right"
   league_data_with_wheel_index <- rivals_league_data |>
     dplyr::mutate(
+      rivals_passes_to_final_third = passes_to_final_third,
       high_line = counterattacks + offsides,
       chance_prevention_mean = .roll_mean(x_g, how_align),
       high_line_mean = .roll_mean(high_line, how_align)
