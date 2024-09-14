@@ -61,10 +61,10 @@ describe("add_wheel_index()", {
     expected <- c(6.6, 5.6, 5.4, 5.3)
     expect_equal(obtained[last_index], expected, tolerance = 1e-2)
   })
-  it("press_resistence_mean", {
+  it("press_resistance_mean", {
     obtained <- data_with_wheel |>
-      dplyr::pull(press_resistence_mean)
-    expected <- c(6.6, 5.6, 5.4, 5.3)
+      dplyr::pull(press_resistance_mean)
+    expected <- c(6.94, 5.67, 5.68, 5.70)
     expect_equal(obtained[last_index], expected, tolerance = 1e-2)
   })
 })
