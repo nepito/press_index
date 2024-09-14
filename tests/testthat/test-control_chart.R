@@ -68,10 +68,18 @@ describe("add_wheel_index_from_rivals()", {
   names_from_dp <- dp$resources$schema$fields[[1]]$name
   data <- readr::read_csv("/workdir/tests/data/tijuana.csv", show_col_types = FALSE, col_names = names_from_dp, skip = 1) |>
     janitor::clean_names()
-  rivals_data <- data |> filter_rivals_data_of_team("Club Tijuana")
+  rivals_data <- data |>
+    filter_rivals_data_of_team("Club Tijuana") |>
+    add_wheel_index_from_rivals()
   n_rows <- nrow(rivals_data)
   it("filter_rivals_data_of_team()", {
     expected <- 35
     expect_equal(n_rows, expected)
+  })
+  it("chance_prevention_mean", {
+    obtained <- rivals_data |>
+      dplyr::pull(chance_prevention_mean)
+    expected <- c(0.81, 0.97, 1.07, 1.16)
+    expect_equal(obtained[last_index], expected, tolerance = 1e-2)
   })
 })
