@@ -62,3 +62,17 @@ describe("add_wheel_index()", {
     expect_equal(obtained[last_index], expected, tolerance = 1e-2)
   })
 })
+
+describe("add_wheel_index_from_rivals()", {
+  dp <- fromJSON("/workdir/tests/data/datapackage.json")
+  names_from_dp <- dp$resources$schema$fields[[1]]$name
+  data <- readr::read_csv("/workdir/tests/data/tijuana.csv", show_col_types = FALSE, col_names = names_from_dp, skip = 1) |>
+    janitor::clean_names()
+  data_with_wheel <- data |> add_wheel_index_from_rivals()
+  n_rows <- nrow(data_with_wheel)
+  last_index <- seq(n_rows, n_rows - 3, -1)
+  it("chance_prevention", {
+    obtained <- data_with_wheel |>
+      dplyr::pull(chance_prevention)
+  })
+})
