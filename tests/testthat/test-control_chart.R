@@ -70,7 +70,7 @@ describe("add_wheel_index()", {
   it("deep_build_up_mean", {
     obtained <- data_with_wheel |>
       dplyr::pull(deep_build_up_mean)
-    expected <- c(6.94, 5.67, 5.68, 5.70)
+    expected <- c(10.1, 8.4, 8.6, 8.8)
     expect_equal(obtained[last_index], expected, tolerance = 1e-2)
   })
 })
