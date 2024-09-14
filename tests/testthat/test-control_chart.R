@@ -108,3 +108,10 @@ describe("add_wheel_index_from_rivals()", {
     expect_equal(obtained[last_index], expected, tolerance = 1e-2)
   })
 })
+
+describe("calculate_limits_of_chart_control", {
+  it("first example", {
+    limits_data <- tibble::tibble(a = 1:5)
+    limits_data |> calculate_limits_of_chart_control(a)
+  })
+})
