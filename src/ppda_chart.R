@@ -17,9 +17,11 @@ random_xolos <- liga_mx |>
   filter(team == team_name) |>
   sample_frac(replace = TRUE) |>
   add_wheel_index(left_align = TRUE) |>
-  select_wheel_index()
+  select_wheel_index() |>
+  write_csv("limits_from_team_metrics.csv")
 
 chart_xolos <- liga_mx |>
   filter(team == team_name) |>
   add_wheel_index() |>
-  select_wheel_index()
+  select_wheel_index() |>
+  write_csv("chart_points_from_team_metrics.csv")

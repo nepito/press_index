@@ -67,3 +67,10 @@ add_wheel_index_from_rivals <- function(rivals_league_data, left_align = FALSE) 
     )
   return(league_data_with_wheel_index)
 }
+
+rivals_select_wheel_index <- function(rivals_league_data_with_wheel_index) {
+  rivals_league_data_with_wheel_index |>
+    dplyr::select(
+      1:3, rivals_passes_to_final_third, high_line_mean, chance_prevention_mean
+    )
+}
