@@ -15,7 +15,7 @@ liga_mx <- data |>
 
 random_xolos <- liga_mx |>
   filter(team == team_name) |>
-  sample_frac(replace = TRUE) |>
+  sample_frac(replace = FALSE) |>
   add_wheel_index(left_align = TRUE) |>
   select_wheel_index() |>
   write_csv("limits_from_team_metrics.csv")
