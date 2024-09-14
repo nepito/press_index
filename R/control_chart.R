@@ -45,3 +45,8 @@ select_wheel_index <- function(league_data_with_wheel_index) {
       creation_mean
     )
 }
+
+filter_rivals_data_of_team <- function(data, team_name) {
+  filtered_data <- data |>
+    dplyr::filter(stringr::str_detect(match, team_name), team != team_name)
+}
