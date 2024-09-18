@@ -111,7 +111,7 @@ describe("add_wheel_index_from_rivals()", {
 })
 
 describe("calculate_limits_of_chart_control", {
-    limits_data <- tibble::tibble(a = c(1:5, NA), b = c(2:6, NA))
+  limits_data <- tibble::tibble(a = c(1:5, NA), b = c(2:6, NA))
   it("first example", {
     obtained <- limits_data |> calculate_limits_of_chart_control(a)
     expected <- c(1.42, 4.58)

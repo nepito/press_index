@@ -80,8 +80,12 @@ rivals_select_wheel_index <- function(rivals_league_data_with_wheel_index) {
 }
 
 calculate_limits_of_chart_control <- function(data_to_calculate_limits, variable_to_calculate_limits) {
-  data <- c(3,3)
-  mean_v <- data_to_calculate_limits |> dplyr::pull({{variable_to_calculate_limits}}) |> mean(na.rm = TRUE)
-  sd_v <- data_to_calculate_limits |> dplyr::pull({{variable_to_calculate_limits}}) |> sd(na.rm = TRUE)
-  limits <- c(mean_v- sd_v, mean_v+ sd_v)
+  data <- c(3, 3)
+  mean_v <- data_to_calculate_limits |>
+    dplyr::pull({{ variable_to_calculate_limits }}) |>
+    mean(na.rm = TRUE)
+  sd_v <- data_to_calculate_limits |>
+    dplyr::pull({{ variable_to_calculate_limits }}) |>
+    sd(na.rm = TRUE)
+  limits <- c(mean_v - sd_v, mean_v + sd_v)
 }
