@@ -7,6 +7,10 @@ describe("add_wheel_index()", {
   data_with_wheel <- data |> add_wheel_index()
   n_rows <- nrow(data_with_wheel)
   last_index <- seq(n_rows, n_rows - 3, -1)
+  pull_variable_from_data_with_wheel <- function(variable_mean) {
+    obtained <- data_with_wheel |>
+      dplyr::pull({{ variable_mean }})
+  }
   it("possession_mean", {
     obtained <- data_with_wheel |>
       dplyr::pull(possession_mean)
@@ -36,46 +40,37 @@ describe("add_wheel_index()", {
     expect_equal(obtained[1:4], expected, tolerance = 1e-2)
   })
   it("shot_quality_mean", {
-    obtained <- data_with_wheel |>
-      dplyr::pull(shot_quality_mean)
-    n_rows <- length(obtained)
+    obtained <- pull_variable_from_data_with_wheel(shot_quality_mean)
     expected <- c(0.0895, 0.0821, 0.0824, 0.0993)
     expect_equal(obtained[last_index], expected, tolerance = 1e-2)
   })
   it("patient_attack_mean", {
-    obtained <- data_with_wheel |>
-      dplyr::pull(patient_attack_mean)
-    n_rows <- length(obtained)
+    obtained <- pull_variable_from_data_with_wheel(patient_attack_mean)
     expected <- c(26, 30, 30, 25)
     expect_equal(obtained[last_index], expected, tolerance = 1e-2)
   })
   it("creation_mean", {
-    obtained <- data_with_wheel |>
-      dplyr::pull(creation_mean)
+    obtained <- pull_variable_from_data_with_wheel(creation_mean)
     expected <- c(0.81, 0.97, 1.07, 1.16)
     expect_equal(obtained[last_index], expected, tolerance = 1e-2)
   })
   it("circulation_mean", {
-    obtained <- data_with_wheel |>
-      dplyr::pull(circulation_mean)
+    obtained <- pull_variable_from_data_with_wheel(circulation_mean)
     expected <- c(6.6, 5.6, 5.4, 5.3)
     expect_equal(obtained[last_index], expected, tolerance = 1e-2)
   })
   it("press_resistance_mean", {
-    obtained <- data_with_wheel |>
-      dplyr::pull(press_resistance_mean)
+    obtained <- pull_variable_from_data_with_wheel(press_resistance_mean)
     expected <- c(6.94, 5.67, 5.68, 5.70)
     expect_equal(obtained[last_index], expected, tolerance = 1e-2)
   })
   it("deep_build_up_mean", {
-    obtained <- data_with_wheel |>
-      dplyr::pull(deep_build_up_mean)
+    obtained <- pull_variable_from_data_with_wheel(deep_build_up_mean)
     expected <- c(10.1, 8.4, 8.6, 8.8)
     expect_equal(obtained[last_index], expected, tolerance = 1e-2)
   })
   it("recoveries_mean", {
-    obtained <- data_with_wheel |>
-      dplyr::pull(recoveries_mean)
+    obtained <- pull_variable_from_data_with_wheel(recoveries_mean)
     expected <- c(72, 72, 72, 72)
     expect_equal(obtained[last_index], expected, tolerance = 1e-2)
   })
