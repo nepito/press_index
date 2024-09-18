@@ -73,6 +73,12 @@ describe("add_wheel_index()", {
     expected <- c(10.1, 8.4, 8.6, 8.8)
     expect_equal(obtained[last_index], expected, tolerance = 1e-2)
   })
+  it("recoveries_mean", {
+    obtained <- data_with_wheel |>
+      dplyr::pull(recoveries_mean)
+    expected <- c(72, 72, 72, 72)
+    expect_equal(obtained[last_index], expected, tolerance = 1e-2)
+  })
 })
 
 describe("add_wheel_index_from_rivals()", {
